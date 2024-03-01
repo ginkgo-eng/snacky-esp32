@@ -28,5 +28,6 @@
 			],
 		},
 	},
-	"runArgs": ["--privileged"]
+	"runArgs": ["--privileged"],
+	"postStartCommand": "git config --global --add safe.directory /opt/esp/idf/."
 }
