@@ -5,8 +5,10 @@
 #include "esp_err.h"
 
 #include "task_snacky.h"
+#include "task_reader.h"
 
 void app_main(void)
 {
     task_snacky_init();
+    task_reader_init();
 }

@@ -1,31 +1,33 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "task_snacky.h"
+#include "freertos/queue.h"
 #include "esp_log.h"
 //#include "unity.h"
 //#include "unity_test_runner.h"
 //#include "esp_heap_caps.h"
 //#include "test_utils.h"
+#include "task_config.h"
 
-#define STACK_SIZE (2048)
-
-void task_snacky(void * pvParameters);
+#include "task_snacky.h"
 
 static const char * TAG = "Snack";
 
 void task_snacky_init()
 {
+    // Create Queues
+    xQueueCreate();
+
+    // Create Task
     BaseType_t ret;
     TaskHandle_t task_snacky_handle = NULL;
     ret = xTaskCreate(task_snacky, "TASK_SNACKY", STACK_SIZE, NULL, 1, &task_snacky_handle);
+
     
+    // If sucessful, delete the task and exit gracefully.
     if (ret == pdPASS)
     {
         vTaskDelete( task_snacky_handle );
     }
-
-
-    // asserts?
 }
 
 void task_snacky(void * pvParameters)
