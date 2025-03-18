@@ -15,12 +15,12 @@ static const char * TAG = "Snack";
 void task_snacky_init()
 {
     // Create Queues
-    xQueueCreate();
+    xQueueCreate(DEFAULT_QUEUE_LENGTH, sizeof(uint8_t));
 
     // Create Task
     BaseType_t ret;
     TaskHandle_t task_snacky_handle = NULL;
-    ret = xTaskCreate(task_snacky, "TASK_SNACKY", STACK_SIZE, NULL, 1, &task_snacky_handle);
+    ret = xTaskCreate(task_snacky, "TASK_SNACKY", DEFAULT_TASK_STACK_SIZE, NULL, 1, &task_snacky_handle);
 
     
     // If sucessful, delete the task and exit gracefully.

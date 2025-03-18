@@ -1,8 +1,10 @@
-#include esp_wifi.HI
+#include "esp_wifi.h"
 
-static const char *TAG = "task_wifi"
+#include "task_wifi.h"
+
+static const char *TAG = "task_wifi";
 
 void task_wifi_init(void)
 {
-    esp_wifi_initi()
+    esp_wifi_init();
 }
