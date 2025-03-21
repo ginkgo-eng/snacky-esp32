@@ -22,7 +22,7 @@ static SnackyCtrl_t * snackyCtrl = NULL;
 void task_snacky_init()
 {
     // Create Queues
-    xQueueCreate(DEFAULT_QUEUE_LENGTH, sizeof(uint8_t));
+    xQueueCreate(TASK_SNACKY_QUEUE_LENGTH, sizeof(uint8_t));
 
     // Create Task
     BaseType_t ret;
