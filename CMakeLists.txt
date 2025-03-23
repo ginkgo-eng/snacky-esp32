@@ -5,4 +5,4 @@
 
 cmake_minimum_required(VERSION 3.16) #Mandatory (strongly reccomended) for all CMakeLists
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(Snacky32 VERSION 0.0.1 LANGUAGES C)
+project(Snacky32 VERSION 0.0.2 LANGUAGES C)
