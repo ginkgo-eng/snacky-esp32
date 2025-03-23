@@ -5,24 +5,28 @@
 
 #include "task_reader.h"
 
+typedef struct ReaderCtrl_s
+{
+    TaskHandle_t    task_handle;
+} ReaderCtrl_t;
+
+static ReaderCtrl_t * ReaderCtrl = NULL;
+
 void task_reader_init()
 {
-        // Create Queues
-        xQueueCreate(DEFAULT_QUEUE_LENGTH, sizeof(uint8_t));
+    // Does task_reader really need a queue? It only sends information outwards? Maybe in the future where we would like to disable it temporarily.
+    // Create Queues
+    // xQueueCreate(DEFAULT_QUEUE_LENGTH, sizeof(uint8_t));
 
-        // Create Task
-        BaseType_t ret;
-        TaskHandle_t task_reader_handle = NULL;
-        ret = xTaskCreate(task_reader, "TASK_READER", DEFAULT_TASK_STACK_SIZE, NULL, 1, &task_reader_handle);
-    
-        // If sucessful, delete the task and exit gracefully.
-        if (ret == pdPASS)
-        {
-            vTaskDelete( task_reader_handle );
-        }
+    // Create Task
+    BaseType_t ret = xTaskCreate(task_reader, TASK_READER_NAME, TASK_READER_STACK_SIZE, NULL, 1, &ReaderCtrl->task_handle);
+    assert(ret == pdPASS);
 }
 
 void task_reader();
 
-void task_reader_deinit();
+void task_reader_deinit()
+{
+    vTaskDelete(ReaderCtrl->task_handle);
+}
 
