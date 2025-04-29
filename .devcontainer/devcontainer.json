@@ -22,9 +22,12 @@
 				"idf.pythonBinPath": "/opt/esp/python_env/idf5.3_py3.10_env/bin/python",
 				"idf.toolsPath": "/opt/esp",
 				"idf.gitPath": "/usr/bin/git"
+				"files.eol": "\n"
 			},
 			"extensions": [
-				"espressif.esp-idf-extension"
+				"espressif.esp-idf-extension",
+				"ms-vscode.cpptools",
+				"ms-vscode.cmake-tools"
 			],
 		},
 	},
